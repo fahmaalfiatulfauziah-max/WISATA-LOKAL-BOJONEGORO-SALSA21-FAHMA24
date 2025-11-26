@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Travoyage – Wisata Lokal Bojonegoro</title>
+  <link rel="icon" href="assets/icon-192.png"> 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* RESET & DASAR */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background: linear-gradient(135deg,#1f0535,#3b0a5b,#a58e03,#d6a100);
+      background-size: 400% 400%; 
+      animation: gradientBG 30s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* OVERLAY BATIK BERGERAK */
+    .batik-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.35;
+      filter: blur(1px);
+    }
+
+    .batik-overlay::before {
+      content: '';
+      position: absolute;
+      width: 400%; height: 400%;
+      top: -150%; left: -150%;
+      background: 
+        repeating-radial-gradient(circle at center, transparent 0, transparent 30px, rgba(255,215,0,0.25) 35px, rgba(255,215,0,0.25) 40px),
+        repeating-linear-gradient(45deg, transparent, transparent 80px, rgba(165,142,3,0.45) 85px, rgba(165,142,3,0.45) 160px);
+      background-size: 160px 160px; 
+      animation: moveBatik 90s linear infinite; 
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes moveBatik {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.05); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    /* HERO SECTION */
+    .hero { padding: 80px 20px 40px; }
+    .hero-title { 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: 4em; 
+      margin-bottom: 20px; 
+      text-transform: uppercase; 
+      text-shadow: 0 0 8px #fff8dc, 0 0 15px #ffd700, 0 0 30px #ff9900;
+      animation: neonGlow 3s ease-in-out infinite alternate;
+    }
+    .hero-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2em; font-weight: 600; margin-bottom: 20px;
+      background: linear-gradient(90deg,#ffd700,#ff8c00,#fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes neonGlow {
+      0% { text-shadow: 0 0 8px #fff8dc, 0 0 15px #ffd700, 0 0 30px #ff9900; }
+      100% { text-shadow: 0 0 10px #ff6600, 0 0 25px #ff9900, 0 0 50px #ffd700; }
+    }
+
+    /* CARD WISATA STYLING */
+    .card-feature {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 15px;
+      transition: all 0.4s ease;
+      max-width: 350px; margin: auto;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      height: 100%;
+    }
+
+    .card-feature:hover {
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      border-color: #ffd700;
+    }
+
+    .card-img-top {
+      height: 200px; width: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card-title-new { 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: 24px; font-weight: 700; 
+      color: #ffd700; 
+      margin-bottom: 10px;
+    }
+    
+    .card-text-new { font-size: 14px; color: #eee; line-height: 1.6; }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      border-top: 2px solid rgba(255,215,0,0.3);
+      color: #ffd700;
+      text-shadow: 0 0 5px #ff6600;
+    }
+    .footer a { color: #fff; text-decoration: none; font-weight: bold; }
+    .footer a:hover { color: #ffd700; text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5em; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="batik-overlay"></div>
+
+  <section class="hero">
+    <h1 class="hero-title">Wisata Lokal Bojonegoro</h1>
+    <div class="hero-subtitle">Jelajahi Indahnya Bumi Angling Dharma</div>
+  </section>
+
+  <div class="container pb-5">
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-4 col-sm-6">
+        <div class="card-feature" data-bs-toggle="modal" data-bs-target="#modalWonocolo">
+          <img src="teksas-wonocolo.jpg" class="card-img-top" alt="Wonocolo">
+          <h5 class="card-title-new">Desa Wisata Wonocolo</h5>
+          <p class="card-text-new">Geosite minyak tradisional "Little Texas", warisan geopark yang unik.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="card-feature" data-bs-toggle="modal" data-bs-target="#modalKayanganApi">
+          <img src="kayangan api.jpg" class="card-img-top" alt="Kayangan Api">
+          <h5 class="card-title-new">Kayangan Api</h5>
+          <p class="card-text-new">Sumber api abadi di hutan Sendangharjo, fenomena geologi legendaris.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="card-feature" data-bs-toggle="modal" data-bs-target="#modalBendunganGerak">
+          <img src="Bendung-Gerak.jpg" class="card-img-top" alt="Bendungan Gerak">
+          <h5 class="card-title-new">Bendungan Gerak</h5>
+          <p class="card-text-new">Panorama waduk Bengawan Solo yang menenangkan saat senja.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="card-feature" data-bs-toggle="modal" data-bs-target="#modalGrowgoland">
+          <img src="growgoland berita.webp" class="card-img-top" alt="Growgoland">
+          <h5 class="card-title-new">Growgoland Waterfun</h5>
+          <p class="card-text-new">Wisata air sungai jernih di tengah hutan yang sejuk.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="card-feature" data-bs-toggle="modal" data-bs-target="#modalKebunBelimbing">
+          <img src="kebun belimbing.jpg" class="card-img-top" alt="Kebun Belimbing">
+          <h5 class="card-title-new">Agrowisata Belimbing</h5>
+          <p class="card-text-new">Petik buah belimbing madu segar langsung dari pohonnya.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="card-feature" data-bs-toggle="modal" data-bs-target="#modalWanaDander">
+          <img src="wana wisata dander1.jpg" class="card-img-top" alt="Wana Dander">
+          <h5 class="card-title-new">Wana Wisata Dander</h5>
+          <p class="card-text-new">Hutan lindung, perkemahan, dan waterpark untuk keluarga.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL CONTOH (tetap sama) -->
+  <div class="modal fade" id="modalWonocolo" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content text-dark">
+        <div class="modal-header">
+          <h5 class="modal-title">Desa Wisata Wonocolo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Wonocolo adalah geosite Bojonegoro dengan sumur minyak tradisional.</p>
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/_SwbavE4g24" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL LAINNYA DITAMBAHKAN SESUAI SEBELUMNYA -->
+  
+  <div class="footer">
+    <p>&copy; 2025 Devina Andra Salsabela 21 - Fahma Alfiatul Fauziah 24</p>
+    <p>
+      Kontak: <a href="tel:081217391752">081217391752</a>, <a href="tel:082333878790">082333878790</a><br>
+      Alamat: Jalan Patimura No.3, Sumbang, Kec. Bojonegoro<br>
+      Email: <a href="mailto:salsa&fahma@gmail.com">salsa&fahma@gmail.com</a>
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
